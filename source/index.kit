@@ -1,0 +1,158 @@
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revalida</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-light">
+    <!-- @import header -->
+     <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg mb-4">
+                    <h1 class="opacity-50 fs-4">Recurso contra as versões preliminares dos Padrões Esperados de Procedimentos - PEP</h1>
+                    <h2>Olá, <span id="nome-da-pessoa">Eudes Penteado da Silveira</span></h2>
+                    <div class="accordion mt-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    Instruções
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Para interposição de recurso(s), o participante deverá observar os seguintes procedimentos:</p>
+                                    <ol>
+                                        <li>identificar-se somente nos campos destinados para tal fim;</li>
+                                        <li>no campo "Padrão", marcar o Padrão a ser questionado;</li>
+                                        <li>apresentar, no campo "Argumentação", argumentação lógica, consistente e concisa;</li>
+                                        <li>clicar no botão "Gravar" após digitar sua argumentação para que sua solicitação seja analisada;</li>
+                                        <li>caso queira interpor outros recursos, repita os procedimentos previstos nos itens de 2 a 4;</li>
+                                        <li>caso queira editar o recurso já gravado, utilize o botão "Alterar recurso(s)";</li>
+                                        <li>após a realização dos procedimentos descritos acima, imprima seu comprovante por meio do botão "Imprimir recurso(s)".</li>
+                                    </ol>
+                                    <h6>ATENÇÃO!</h6>
+                                    <ul>
+                                        <li>Serão preliminarmente indeferidos os recursos extemporâneos, inconsistentes e que não atendam às exigências do Sistema Eletrônico de Interposição de Recurso.</li>
+                                        <li>Somente serão válidos os recursos que estiverem gravados ao final do prazo de interposição de recursos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg mb-4">
+                    <h2 class="fs-3">Seus recursos</h2>
+                    <div id="listaRecursos">
+                        <div class="recurso card shadow">
+                            <div class="card-body">
+                                <div class="info">
+                                    <div class="estacao">Estação 1</div>
+                                    <div class="ultimaEdicao">
+                                        <img src="images/calendar-day.svg" alt="ícone de calendário">
+                                        <div class="data">03/06/2024</div>
+                                        <div class="hora">16:20</div>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <button type="button" class="btn btn-lg btn-primary"><img src="images/edit.svg" alt="ícone de editar" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso"></button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluirRecurso"><img src="images/trash.svg" alt="ícone de lixeira"></button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso">Novo recurso</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- modals -->
+    <div id="modalNovoRecurso" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Novo recurso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-1"><strong>Programa:</strong> INEP_REV_MED_24_2</p>
+                    <p><strong>Prova:</strong> Padrões Esperados de Procedimentos - PEP</p>
+                    <div class="mb-3">
+                        <label for="selectPadrao" class="form-label">Tipo de requisito</label>
+                        <select class="form-select" aria-label="Filtrar por pré-requisito" id="selectPadrao">
+                            <option value="" selected>Selecionar...</option>
+                            <option value="est01">Estação 01</option>
+                            <option value="est02">Estação 02</option>
+                            <option value="est03">Estação 03</option>
+                            <option value="est04">Estação 04</option>
+                            <option value="est05">Estação 05</option>
+                            <option value="est06">Estação 06</option>
+                            <option value="est07">Estação 07</option>
+                            <option value="est08">Estação 08</option>
+                            <option value="est09">Estação 09</option>
+                            <option value="est10">Estação 10</option>
+                            <option value="est11">Estação 11</option>
+                            <option value="est12">Estação 12</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="argumento" class="form-label">Example textarea</label>
+                        <textarea class="form-control" id="argumento" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary salvar-recurso" disabled>Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectPadrao = document.getElementById('selectPadrao');
+            const argumento = document.getElementById('argumento');
+            const btnSave = document.querySelector('.btn.salvar-recurso');
+
+            function updateButtonState() {
+                // Check if both fields are not empty
+                if (selectPadrao.value !== '' && argumento.value.trim() !== '') {
+                    btnSave.disabled = false; // Enable the button
+                } else {
+                    btnSave.disabled = true; // Disable the button
+                }
+            }
+
+            // Add event listeners to both fields to check their state on change/input
+            selectPadrao.addEventListener('change', updateButtonState);
+            argumento.addEventListener('input', updateButtonState);
+        });
+    </script>
+
+    <div id="modalExcluirRecurso" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-danger">Excluir Recurso</h3>
+                    <p class="mb-1">Tem certeza que deseja excluir o recurso <strong>Estação 01</strong>?</p>
+                    <p>Esta ação não pode ser desfeita.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- scripts -->
+     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

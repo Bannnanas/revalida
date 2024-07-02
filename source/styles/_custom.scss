@@ -1,0 +1,63 @@
+header {
+    background-color: $white;
+    height: 60px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .sistema {
+            text-transform: uppercase;
+            letter-spacing: .5;
+            margin-right: .5rem;
+            opacity: .7;
+        }
+    }
+}
+
+.content {
+    margin-top: 2rem;
+}
+
+.recurso {
+    margin-bottom: 1rem;
+    transition: all .3s ease;
+    &:hover {
+        box-shadow: $box-shadow-sm !important;
+        margin-left: .2rem;
+        margin-right: .2rem;
+    }
+    .card-body {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        .info {
+            flex-grow: 1;
+        }
+    }
+    .estacao {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $primary;
+        margin-bottom: .25rem;
+    }
+    .ultimaedicao {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        .hora {
+            &::before {
+                content: 'às';
+                margin-right: .25rem;
+            }
+        }
+    }
+    .actions {
+        button {
+            margin-left: .5rem;
+            padding: 10px;
+        }
+    }
+}
