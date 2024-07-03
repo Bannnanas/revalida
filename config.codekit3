@@ -142,12 +142,12 @@
       "oF" : 0
     },
     "\/source\/js\/bootstrap.js" : {
-      "bF" : 0,
+      "bF" : 4,
       "ft" : 64,
       "ma" : 0,
-      "mi" : 1,
+      "mi" : 2,
       "oA" : 0,
-      "oAP" : "\/docs\/js\/bootstrap-min.js",
+      "oAP" : "\/docs\/js\/bootstrap.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -195,7 +195,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "brackets_teal",
     "iconImageWasSetByUser" : 1,
-    "lastBuiltDate" : 741705034.24416006
+    "lastBuiltDate" : 741713103.74643898
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
