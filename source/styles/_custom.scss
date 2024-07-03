@@ -21,8 +21,14 @@ header {
     margin-top: 2rem;
 }
 
+.comunicado-sutil {
+    background-color: darken($color: $light, $amount: 4);
+    border-radius: $border-radius;
+    color: lighten($color: $secondary, $amount: 10);
+}
+
 .recurso {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     transition: all .3s ease;
     &:hover {
         box-shadow: $box-shadow-sm !important;
@@ -38,20 +44,23 @@ header {
         }
     }
     .estacao {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        color: $primary;
         margin-bottom: .25rem;
     }
     .ultimaedicao {
         display: flex;
         align-items: center;
         gap: .25rem;
+        color: $secondary;
         .hora {
             &::before {
                 content: 'às';
                 margin-right: .25rem;
             }
+        }
+        img {
+            opacity: .5;
         }
     }
     .actions {

@@ -23,8 +23,8 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>Para interposição de recurso(s), o participante deverá observar os seguintes procedimentos:</p>
-                                    <ol>
+                                    <p class="text-secondary">Para interposição de recurso(s), o participante deverá observar os seguintes procedimentos:</p>
+                                    <ol class="text-secondary">
                                         <li>identificar-se somente nos campos destinados para tal fim;</li>
                                         <li>no campo "Padrão", marcar o Padrão a ser questionado;</li>
                                         <li>apresentar, no campo "Argumentação", argumentação lógica, consistente e concisa;</li>
@@ -34,7 +34,7 @@
                                         <li>após a realização dos procedimentos descritos acima, imprima seu comprovante por meio do botão "Imprimir recurso(s)".</li>
                                     </ol>
                                     <h6>ATENÇÃO!</h6>
-                                    <ul>
+                                    <ul class="text-secondary">
                                         <li>Serão preliminarmente indeferidos os recursos extemporâneos, inconsistentes e que não atendam às exigências do Sistema Eletrônico de Interposição de Recurso.</li>
                                         <li>Somente serão válidos os recursos que estiverem gravados ao final do prazo de interposição de recursos.</li>
                                     </ul>
@@ -45,22 +45,31 @@
                 </div>
                 <div class="col-lg mb-4">
                     <h2 class="fs-3">Seus recursos</h2>
-                    <div id="listaRecursos">
-                        <div class="recurso card shadow">
-                            <div class="card-body">
-                                <div class="info">
-                                    <div class="estacao">Estação 1</div>
-                                    <div class="ultimaEdicao">
-                                        <img src="images/calendar-day.svg" alt="ícone de calendário">
-                                        <div class="data">03/06/2024</div>
-                                        <div class="hora">16:20</div>
-                                    </div>
+                    <div class="mt-4 mb-4">
+                        <div id="listaRecursos">
+                        
+                        </div>
+                        <div id="listaRecursosLoading" class="comunicado-sutil">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border text-secondary m-5" role="status">
+                                    <span class="visually-hidden">Carregando...</span>
                                 </div>
-                                <div class="actions">
-                                    <button type="button" class="btn btn-lg btn-primary"><img src="images/edit.svg" alt="ícone de editar" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso"></button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluirRecurso"><img src="images/trash.svg" alt="ícone de lixeira"></button>
-                                </div>
-                                
+                            </div>
+                        </div>
+                        <div id="listaRecursosEmpty" class="comunicado-sutil p-5">
+                            <div class="d-flex justify-content-center mb-3">
+                                <img width="68" class="opacity-50" src="images/empty.svg" alt="desenho de uma lupa sem encontrar nada">
+                            </div>
+                            <div class="d-flex justify-content-center text-center">
+                                Você ainda não possui recursos cadastrados. <br>Clique no botão abaixo para adicionar um novo recurso.
+                            </div>
+                        </div>
+                        <div id="listaRecursosError" class="comunicado-sutil p-5">
+                            <div class="d-flex justify-content-center mb-3">
+                                <img width="68" class="opacity-50" src="images/error.svg" alt="desenho de uma lupa sem encontrar nada">
+                            </div>
+                            <div class="d-flex justify-content-center text-center">
+                                Não foi possível carregar os recursos. <br>Por favor, tente novamente mais tarde.
                             </div>
                         </div>
                     </div>
@@ -79,8 +88,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="mb-1"><strong>Programa:</strong> INEP_REV_MED_24_2</p>
-                    <p><strong>Prova:</strong> Padrões Esperados de Procedimentos - PEP</p>
+                    <p class="mb-1 text-secondary"><strong>Programa:</strong> INEP_REV_MED_24_2</p>
+                    <p class="text-secondary"><strong>Prova:</strong> Padrões Esperados de Procedimentos - PEP</p>
                     <div class="mb-3">
                         <label for="selectPadrao" class="form-label">Tipo de requisito</label>
                         <select class="form-select" aria-label="Filtrar por pré-requisito" id="selectPadrao">
@@ -111,26 +120,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectPadrao = document.getElementById('selectPadrao');
-            const argumento = document.getElementById('argumento');
-            const btnSave = document.querySelector('.btn.salvar-recurso');
-
-            function updateButtonState() {
-                // Check if both fields are not empty
-                if (selectPadrao.value !== '' && argumento.value.trim() !== '') {
-                    btnSave.disabled = false; // Enable the button
-                } else {
-                    btnSave.disabled = true; // Disable the button
-                }
-            }
-
-            // Add event listeners to both fields to check their state on change/input
-            selectPadrao.addEventListener('change', updateButtonState);
-            argumento.addEventListener('input', updateButtonState);
-        });
-    </script>
 
     <div id="modalExcluirRecurso" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
@@ -154,5 +143,90 @@
 
      <!-- scripts -->
      <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+     <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+    
+            // para habilitar o botão apenas quando os campos estiverem preenchidos
+            const selectPadrao = document.getElementById('selectPadrao');
+            const argumento = document.getElementById('argumento');
+            const btnSave = document.querySelector('.btn.salvar-recurso');
+            function updateButtonState() {
+                // Check if both fields are not empty
+                if (selectPadrao.value !== '' && argumento.value.trim() !== '') {
+                    btnSave.disabled = false; // Enable the button
+                } else {
+                    btnSave.disabled = true; // Disable the button
+                }
+            }
+            // Add event listeners to both fields to check their state on change/input
+            selectPadrao.addEventListener('change', updateButtonState);
+            argumento.addEventListener('input', updateButtonState);
+    
+            // URL da planilha
+            const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTczCZgZF-4Q45Co-UgVMKrbOLz3nTrp20zwNd6z0DmfDvZh2_j2ldAkPbofCIr89aPa5zvst67HR8V/pub?gid=0&single=true&output=csv';
+            // Elementos de feedback
+            const listaRecursosLoading = document.getElementById('listaRecursosLoading');
+            const listaRecursosEmpty = document.getElementById('listaRecursosEmpty');
+            const listaRecursosError = document.getElementById('listaRecursosError');
+            const listaRecursos = document.getElementById('listaRecursos');
+    
+            // Mostrar o carregamento inicialmente
+            listaRecursosLoading.style.display = 'block';
+            listaRecursosEmpty.style.display = 'none';
+            listaRecursosError.style.display = 'none';
+            listaRecursos.style.display = 'none';
+    
+            // Faz a requisição do CSV e analisa os dados
+            Papa.parse(url, {
+                download: true,
+                header: true, // Considera a primeira linha do CSV como cabeçalhos de coluna
+                complete: function(results) {
+                    listaRecursosLoading.style.display = 'none';
+                    if (results.data.length === 0) {
+                        listaRecursosEmpty.style.display = 'block';
+                    } else {
+                        listaRecursos.style.display = 'block';
+                        displayCards(results.data); // Chama a função displayCards com os dados analisados
+                    }
+                },
+                error: function() {
+                    listaRecursosLoading.style.display = 'none';
+                    listaRecursosError.style.display = 'block';
+                }
+            });
+    
+            function displayCards(data) {
+                const cardsContainer = document.getElementById('listaRecursos');
+                cardsContainer.innerHTML = ''; // Limpa qualquer conteúdo existente
+                // Cria um card para cada item do CSV
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'recurso card shadow';
+                    card.innerHTML = `
+                        <div class="card-body">
+                            <div class="info">
+                                <div class="estacao">${item.estacao}</div>
+                                <div class="ultimaEdicao">
+                                    <img src="images/calendar-day.svg" alt="ícone de calendário">
+                                    <div class="data">${item.dia}</div>
+                                    <div class="hora">${item.hora}</div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button type="button" class="btn btn-lg btn-primary"><img src="images/edit.svg" alt="ícone de editar" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso"></button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluirRecurso"><img src="images/trash.svg" alt="ícone de lixeira"></button>
+                            </div>
+                        </div>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+            }
+    
+        });
+    
+    </script>
 </body>
 </html>
