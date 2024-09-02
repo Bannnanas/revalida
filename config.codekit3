@@ -45,6 +45,14 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/source\/_card-item-video.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/docs\/_card-item-video.html",
+      "oF" : 0
+    },
     "\/source\/_header.kit" : {
       "cB" : 0,
       "ft" : 2048,
@@ -53,11 +61,31 @@
       "oAP" : "\/docs\/_header.html",
       "oF" : 0
     },
+    "\/source\/images\/aviso.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/aviso.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/source\/images\/calendar-day.svg" : {
       "ft" : 2097152,
       "miP" : 0,
       "oA" : 2,
       "oAP" : "\/docs\/images\/calendar-day.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/images\/document.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/document.svg",
       "oF" : 0,
       "opt" : 0,
       "plM" : 52780316221407,
@@ -93,6 +121,16 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/source\/images\/justice.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/justice.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/source\/images\/logo-inep.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -118,6 +156,36 @@
       "miP" : 0,
       "oA" : 2,
       "oAP" : "\/docs\/images\/no-results.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/images\/play.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/play.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/images\/plus.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/plus.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/images\/printer.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/docs\/images\/printer.svg",
       "oF" : 0,
       "opt" : 0,
       "plM" : 52780316221407,
@@ -151,6 +219,14 @@
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
+    },
+    "\/source\/segunda-etapa.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/docs\/segunda-etapa.html",
+      "oF" : 0
     },
     "\/source\/styles\/_custom.scss" : {
       "aP" : 0,
@@ -195,7 +271,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "brackets_teal",
     "iconImageWasSetByUser" : 1,
-    "lastBuiltDate" : 741713103.74643898
+    "lastBuiltDate" : 746805704.33199203
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,

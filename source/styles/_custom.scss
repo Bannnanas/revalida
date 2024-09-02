@@ -23,7 +23,7 @@ header {
 
 .comunicado-sutil {
     background-color: darken($color: $light, $amount: 4);
-    border-radius: $border-radius;
+    border-radius: $border-radius-lg;
     color: lighten($color: $secondary, $amount: 10);
 }
 
@@ -47,6 +47,15 @@ header {
         font-size: 1.1rem;
         font-weight: 700;
         margin-bottom: .25rem;
+        .quesito {
+            font-weight: 600;
+            opacity: .6;
+            &::before {
+                content: '-';
+                margin-right: .25rem;
+                opacity: .3;
+            }
+        }
     }
     .ultimaedicao {
         display: flex;
@@ -67,6 +76,31 @@ header {
         button {
             margin-left: .5rem;
             padding: 10px;
+        }
+    }
+}
+
+.listaVideos {
+    .card-item-video {
+        box-shadow: $box-shadow-lg;
+        transition: all .3s ease;
+        &:hover {
+            box-shadow: $box-shadow-sm !important;
+            margin-left: .2rem;
+            margin-right: .2rem;
+        }
+        .estacao {
+            font-weight: 700;
+            .descricao {
+                opacity: .6;
+                font-weight: 400;
+    
+                &::before {
+                    content: '-';
+                    margin: 0 .25rem;
+                    opacity: .3;
+                }
+            }
         }
     }
 }

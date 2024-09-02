@@ -1,0 +1,391 @@
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revalida</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-light">
+    <header class="shadow bg-body-tertiary navbar-expand-lg fixed-top border-bottom">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-inep.svg" alt="logomarca inep">
+            </div>
+            <div id="logo-complementar" class="d-flex">
+                <div class="sistema">Sistema</div>
+                <div>
+                    <img src="images/logo-revalida.svg" alt="logomarca revalida">
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- serve para preencher o espaco do header, que por ter posição fixa, não ocupa espaço no DOM -->
+    <div class="espacoHeader" style="height: 60px;"></div>
+     <section class="content">
+        <div class="container">
+            <h1 class="mb-3">Recurso contra o resultado preliminar na prova de habilidades clínicas</h1>
+            <p class="mb-1 opacity-50">Inscrição: 10006884</p>
+            <h2 id="nome-user" class="opacity-75 fs-4">Eudes Penteado da Silveira</h2>
+            <button type="button" class="btn btn-secondary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalDeclaracao"><img class="me-2" src="images/justice.svg" alt="ícone da balança de justiça">Termos de Uso</button>
+        </div>
+        
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <h2 class="col fs-3 me-2">Recursos interpostos</h2>
+                        <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/printer.svg" alt="ícone de uma impressora">Imprimir</button>
+                    </div>
+                    <div class="mb-2">
+                        <div id="listaRecursos">
+                        </div>
+                        <div id="listaRecursosLoading" class="comunicado-sutil">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border text-secondary m-5" role="status">
+                                    <span class="visually-hidden">Carregando...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="listaRecursosEmpty" class="comunicado-sutil p-5">
+                            <div class="d-flex justify-content-center mb-3">
+                                <img width="68" class="opacity-50" src="images/empty.svg" alt="desenho de uma lupa sem encontrar nada">
+                            </div>
+                            <div class="d-flex justify-content-center text-center">
+                                Você ainda não possui recursos cadastrados. <br>Clique no botão abaixo para adicionar um novo recurso.
+                            </div>
+                        </div>
+                        <div id="listaRecursosError" class="comunicado-sutil p-5">
+                            <div class="d-flex justify-content-center mb-3">
+                                <img width="68" class="opacity-50" src="images/error.svg" alt="desenho de uma lupa sem encontrar nada">
+                            </div>
+                            <div class="d-flex justify-content-center text-center">
+                                Não foi possível carregar os recursos. <br>Por favor, tente novamente mais tarde.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso"><img class="me-2" src="images/plus.svg" alt="ícone de um mais">Novo Recurso</button>
+                    </div>
+                    <div>
+                        <h4>Instuções</h4>
+                        <p class="text-secondary">Para interposição de recurso(s), o participante deverá observar os seguintes procedimentos:</p>
+                        <ol class="text-secondary">
+                            <li>Verifique seu desempenho, clicando o botão "Ver espelho";</li>
+                            <li>Clique o botão "+ NovoRecurso" para interpor um recurso;</li>
+                            <li>Selecione a estação que pretende interpor recurso;</li>
+                            <li>Selecione o quesito.</li>
+                            <li>Os recursos que não guardarem pertinência com essas indicações serão desconsiderados para efeito de análise:</li>
+                            <li>Apresente, no campo "Argumentação", argumentação lógica, consistente e concisa;</li>
+                            <li>após finalizar a apresentação de seus argumentos, clique o botão "Salvar";</li>
+                            <li>caso queira interpor outros recursos, repita os procedimentos previstos nos itens de 2 a 6;</li>
+                            <li>caso queira editar o recurso já gravado, repita os procedimentos previstos nos itens 2 a 6 e "Salvar";</li>
+                            <li>após a realização dos procedimentos descritos acima, imprima seu comprovante por meio do botão "Imprimir recursos".</li>
+                        </ol>
+                        <h6>ATENÇÃO!</h6>
+                        <ul class="text-secondary">
+                            <li>Serão preliminarmente indeferidos os recursos extemporâneos, inconsistentes e que não atendam às exigências do Sistema Eletrônico de Interposição de Recurso.</li>
+                            <li>Somente serão válidos os recursos que estiverem gravados ao final do prazo de interposição de recursos.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg mb-4">
+                    <div class="d-flex align-items-center">
+                        <h2 class="col fs-3 me-2">Vídeos da avaliação</h2>
+                        <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/document.svg" alt="ícone de um documento em papel">Espelho</button>
+                    </div>
+                    <div class="listaVideos mt-2">
+                        <div class="card card-item-video mb-2">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-item-video mb-2">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                            <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        <div class="card card-item-video mb-2">
+                                                                            <div class="card-body">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                    <div class="card-body">
+                                                                                                        <div class="d-flex align-items-center">
+                                                                                                            <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                            <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                            <div class="card-body">
+                                                                                                                                <div class="d-flex align-items-center">
+                                                                                                                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                    <div class="card-body">
+                                                                                                                                                        <div class="d-flex align-items-center">
+                                                                                                                                                            <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                            <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div>
+                                                                                                                                                </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                                            <div class="card-body">
+                                                                                                                                                                                <div class="d-flex align-items-center">
+                                                                                                                                                                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                                                                    <div class="card-body">
+                                                                                                                                                                                                        <div class="d-flex align-items-center">
+                                                                                                                                                                                                            <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                                                                            <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                                                                                            <div class="card-body">
+                                                                                                                                                                                                                                <div class="d-flex align-items-center">
+                                                                                                                                                                                                                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                                                                                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                        </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                                                                                                                    <div class="card-body">
+                                                                                                                                                                                                                                                        <div class="d-flex align-items-center">
+                                                                                                                                                                                                                                                            <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                                                                                                                            <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                </div>
+                        <div class="card card-item-video mb-2">
+                                                                                                                                                                                                                                                                            <div class="card-body">
+                                                                                                                                                                                                                                                                                <div class="d-flex align-items-center">
+                                                                                                                                                                                                                                                                                    <div class="estacao flex-grow-1">Estação 01<span class="descricao">Clínica Médica</span></div>
+                                                                                                                                                                                                                                                                                    <button type="button" class="btn btn-primary d-flex align-items-center"><img class="me-2" src="images/play.svg" alt="ícone de play">Vídeo</button>
+                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- modals -->
+    <div id="modalDeclaracao" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Declaração</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="images/aviso.svg" width="80" class="mb-4" alt="desenho de uma placa triangular amarela com uma exclamação dentro">
+                    </div>
+                    <h5>Declaro, sob as penas da lei, ter ciência de que:</h5>
+                    <ol class="opacity-75">
+                        <li class="mb-2">
+                            Estou tendo acesso ao Sistema Eletrônico de Interposição de Recursos contra resultado preliminar da prova de habilidades clínicas, conforme previsão editalícia;
+                        </li>
+                        <li class="mb-2">
+                            O material a que estou tendo acesso tem caráter confidencial e me foi dada a permissão tão somente para consultá-lo no próprio Sistema de Interposição de Recursos;
+                        </li>
+                        <li class="mb-2">
+                            Eventual impossibilidade de visualização da filmagem de alguma das estações não impede a interposição de recurso nessa estação;
+                        </li>
+                        <li class="mb-2">
+                            É terminantemente proibida a divulgação, a gravação, o envio ou qualquer tipo de reprodução desse material, seja por que meio for.
+                        </li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-check flex-grow-1">
+                        <input class="form-check-input" type="checkbox" value="" id="naoMostreMais">
+                        <label class="form-check-label" for="naoMostreMais">
+                            Não mostre mais este aviso
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary">Li e aceito os termos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalNovoRecurso" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Interpor recurso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="selectEstacao" class="form-label">Estação</label>
+                        <select class="form-select" aria-label="Filtrar por pré-requisito" id="selectEstacao">
+                            <option value="" selected>Selecionar...</option>
+                            <option value="est01">Estação 01</option>
+                            <option value="est02">Estação 02</option>
+                            <option value="est03">Estação 03</option>
+                            <option value="est04">Estação 04</option>
+                            <option value="est05">Estação 05</option>
+                            <option value="est06">Estação 06</option>
+                            <option value="est07">Estação 07</option>
+                            <option value="est08">Estação 08</option>
+                            <option value="est09">Estação 09</option>
+                            <option value="est10">Estação 10</option>
+                            <option value="est11">Estação 11</option>
+                            <option value="est12">Estação 12</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectQuesito" class="form-label">Estação</label>
+                        <select class="form-select" aria-label="Filtrar por pré-requisito" id="selectQuesito">
+                            <option value="" selected>Selecionar...</option>
+                            <option value="est01">Quesito 01</option>
+                            <option value="est02">Quesito 02</option>
+                            <option value="est03">Quesito 03</option>
+                            <option value="est04">Quesito 04</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="argumento" class="form-label">Argumento</label>
+                        <textarea class="form-control" id="argumento" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary salvar-recurso" disabled>Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalExcluirRecurso" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-danger">Excluir Recurso</h3>
+                    <p class="mb-1">Tem certeza que deseja excluir o recurso <strong>Estação 01</strong>?</p>
+                    <p>Esta ação não pode ser desfeita.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- scripts -->
+     <script type="module" src="js/bootstrap.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+     <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+    
+            // para habilitar o botão apenas quando os campos estiverem preenchidos
+            const selectEstacao = document.getElementById('selectEstacao');
+            const selectQuesito = document.getElementById('selectQuesito');
+            const argumento = document.getElementById('argumento');
+            const btnSave = document.querySelector('.btn.salvar-recurso');
+            function updateButtonState() {
+                // Check if all fields are not empty
+                if (selectEstacao.value !== '' && selectQuesito.value !== '' && argumento.value.trim() !== '') {
+                    btnSave.disabled = false; // Enable the button
+                } else {
+                    btnSave.disabled = true; // Disable the button
+                }
+            }
+            // Add event listeners to all fields to check their state on change/input
+            selectEstacao.addEventListener('change', updateButtonState);
+            selectQuesito.addEventListener('change', updateButtonState);
+            argumento.addEventListener('input', updateButtonState);
+    
+            // URL da planilha
+            const url = 'https://docs.google.com/spreadsheets/d/16XbF1lA6FCEj4DveVPbjRWxb-ZO4fU1zGEopRR2YcIw/pub?output=csv';
+            // Elementos de feedback
+            const listaRecursosLoading = document.getElementById('listaRecursosLoading');
+            const listaRecursosEmpty = document.getElementById('listaRecursosEmpty');
+            const listaRecursosError = document.getElementById('listaRecursosError');
+            const listaRecursos = document.getElementById('listaRecursos');
+    
+            // Mostrar o carregamento inicialmente
+            listaRecursosLoading.style.display = 'block';
+            listaRecursosEmpty.style.display = 'none';
+            listaRecursosError.style.display = 'none';
+            listaRecursos.style.display = 'none';
+    
+            // Faz a requisição do CSV e analisa os dados
+            Papa.parse(url, {
+                download: true,
+                header: true, // Considera a primeira linha do CSV como cabeçalhos de coluna
+                complete: function(results) {
+                    listaRecursosLoading.style.display = 'none';
+                    if (results.data.length === 0) {
+                        listaRecursosEmpty.style.display = 'block';
+                    } else {
+                        listaRecursos.style.display = 'block';
+                        displayCards(results.data); // Chama a função displayCards com os dados analisados
+                    }
+                },
+                error: function() {
+                    listaRecursosLoading.style.display = 'none';
+                    listaRecursosError.style.display = 'block';
+                }
+            });
+    
+            function displayCards(data) {
+                const cardsContainer = document.getElementById('listaRecursos');
+                cardsContainer.innerHTML = ''; // Limpa qualquer conteúdo existente
+                // Cria um card para cada item do CSV
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'recurso card shadow';
+                    card.innerHTML = `
+                        <div class="card-body">
+                            <div class="info">
+                                <div class="estacao">${item.estacao} <span class="quesito">${item.quesito}</span></div>
+                                <div class="ultimaEdicao">
+                                    <img src="images/calendar-day.svg" alt="ícone de calendário">
+                                    <div class="data">${item.dia}</div>
+                                    <div class="hora">${item.hora}</div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button type="button" class="btn btn-lg btn-primary"><img src="images/edit.svg" alt="ícone de editar" data-bs-toggle="modal" data-bs-target="#modalNovoRecurso"></button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluirRecurso"><img src="images/trash.svg" alt="ícone de lixeira"></button>
+                            </div>
+                        </div>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+            }
+    
+        });
+    
+    </script>
+</body>
+</html>
